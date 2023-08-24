@@ -16,7 +16,7 @@ module.exports = async function (deployer, network, accounts) {
             let char = encode(decode(random, 0), 0);
             console.log("Random char: " + char);
             console.log("Rebirth tokenId: " + tokenId.toString());
-            let rebirthNft = await creator.rebirthNft(tokenId, char, { from: accounts[0], gas: 10000000 });
+            let rebirthNft = await creator.rebirthNft(tokenId, char, { from: accounts[0], gas: 2000000 });
             console.log("Rebirth nft at txn: " + rebirthNft.tx);   
         }
     }

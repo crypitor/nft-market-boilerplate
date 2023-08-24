@@ -15,7 +15,7 @@ module.exports = async function (deployer, network, accounts) {
     let random = lodash.random(0, 1000000000);
     let char = encode(decode(random, 0), 0);
     console.log("Random char: " + char);
-    let createNftOwner = await creator.createItem(char, { from: accounts[0], gas: 10000000 });
+    let createNftOwner = await creator.createItem(char, { from: accounts[0], gas: 2000000 });
     console.log("Created nft at txn: " + createNftOwner.tx);   
 
     // owner create new nft
