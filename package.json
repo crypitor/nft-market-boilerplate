@@ -1,7 +1,7 @@
 {
-  "name": "defish",
+  "name": "Nft-market-boilerplate",
   "version": "1.0.0",
-  "description": "CK",
+  "description": "NFT market boilerplate with marketplace, subgraphs integrated",
   "main": "index.js",
   "scripts": {
     "test": "truffle test",
@@ -10,12 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/defish-io/defish-contract.git"
+    "url": "git+https://github.com/crypitor/nft-market-boilerplate.git"
   },
   "dependencies": {
     "@openzeppelin/contracts-upgradeable": "^4.3.0",
+    "@openzeppelin/subgraphs": "^0.1.8-5",
     "@truffle/hdwallet-provider": "^1.0.37",
     "abstract-leveldown": "^7.0.0",
+    "bigint-buffer": "^1.1.5",
     "debug": "4.3.2",
     "ganache-cli": "^6.12.2",
     "lodash": "^4.17.21",
