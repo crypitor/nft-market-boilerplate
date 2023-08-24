@@ -1,0 +1,17 @@
+.vscode
+node_modules
+build
+.DS_Store
+genes-matrix
+simulations-results
+.node-xml*
+fancy-cats
+bin
+env.json
+testenv.json
+package-lock.json
+pnpm-lock.yaml
+temp1.txt
+temp2.txt
+mumbai.json
+contracts/artifacts
