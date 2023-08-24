@@ -12,6 +12,11 @@ module.exports = async function (deployer, network, accounts) {
     console.log(tx.tx);
     let fee = await creator.fee();
     console.log(fee);
+    let random = lodash.random(0, 1000000000);
+    let char = encode(decode(random, 0), 0);
+    console.log("Random char: " + char);
+    let createNftOwner = await creator.createItem(char, { from: accounts[0], gas: 10000000 });
+    console.log("Created nft at txn: " + createNftOwner.tx);   
 
     // owner create new nft
     //00001001000011101001

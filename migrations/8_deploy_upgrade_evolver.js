@@ -21,7 +21,7 @@ module.exports = async function (deployer, network, accounts) {
             let tx = await core.setExpScientist(updater.address, true);
             console.log("Exp Scientist has been whitelisted at tx: " + tx.tx);
 
-            let setadmin = await updater.setAdmin("0xBBFd1Ef6cD4024494618819F6Cb7da4b37c2E09e", true);
+            let setadmin = await updater.setAdmin(accounts[0], true);
             console.log("set admin at txn: " + setadmin.tx);
 
             let setmul = await updater.setMultiplier(5000000000);

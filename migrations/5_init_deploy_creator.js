@@ -6,7 +6,7 @@ module.exports = async function (deployer, network, accounts) {
     token = MyToken.address;
     nft = NFTCore.address;
     
-    deployer.deploy(NFTCreator, nft, token, { from: accounts[0], overwrite: true }).then(async (instance) => {
+    deployer.deploy(NFTCreator, nft, token, { from: accounts[0]}).then(async (instance) => {
         let core = await NFTCore.at(NFTCore.address);
         let tx = await core.setSpawner(instance.address, true);
         console.log("Spawner has been whitelisted at tx: " + tx.tx);

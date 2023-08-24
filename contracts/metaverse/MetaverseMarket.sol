@@ -16,12 +16,14 @@ contract MetaverseMarket is MetaverseBaseMarket, MarketEnumerable, OwnableUpgrad
     event ApproveNFT(address nft, bool enable);
 
     function initialize(address _integratedERC20) public initializer {
+        require(_integratedERC20 != address(0), "Invalid address");
         OwnableUpgradeable.__Ownable_init();
         integratedERC20 = IERC20(_integratedERC20);
     }
 
-    function setTradingToken(address tradingToken) public onlyOwner virtual {
-        integratedERC20 = IERC20(tradingToken);
+    function setTradingToken(address _tradingToken) public onlyOwner virtual {
+        require(_tradingToken != address(0), "Invalid address");
+        integratedERC20 = IERC20(_tradingToken);
     }
 
     function setTradingFee(uint256 _tradingFee) public onlyOwner {
@@ -30,7 +32,9 @@ contract MetaverseMarket is MetaverseBaseMarket, MarketEnumerable, OwnableUpgrad
     }
 
     function listing(address _nftAddress, bool enable) public onlyOwner virtual {
+        require(_nftAddress != address(0), "Invalid address");
         approvedNfts[_nftAddress] = enable;
+        emit ApproveNFT(_nftAddress, enable);
     }
 
     /**

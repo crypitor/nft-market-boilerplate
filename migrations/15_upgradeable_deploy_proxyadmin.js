@@ -1,7 +1,7 @@
 const ProxyAdmin = artifacts.require('ProxyAdmin');
 
 module.exports = function (deployer, network, accounts) {
-    deployer.deploy(ProxyAdmin, { from: accounts[0], overwrite: false });
+    deployer.deploy(ProxyAdmin);
 };
 
 // truffle run verify ProxyAdmin --network bscTestnet

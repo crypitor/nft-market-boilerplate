@@ -9,7 +9,7 @@ module.exports = async function (deployer, network, accounts) {
 
     // let evolvetx = await updater.evolveItem(98, 12000);
     // console.log("evolve tx: " + evolvetx.tx);
-    // let reward = await updater.getUser('0x7c3487cec3635ab75c6f7b30e002ef9fc20685e4');
+    // let reward = await updater.getUser(accounts[1].address);
     // console.log(reward[0].toString());
     // console.log(reward[1].toString());
 

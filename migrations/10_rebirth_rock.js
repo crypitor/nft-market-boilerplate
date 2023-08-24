@@ -7,19 +7,19 @@ module.exports = async function (deployer, network, accounts) {
     let creator = await NFTCreator.at(NFTCreator.address);
     let core = await NFTCore.at(NFTCore.address);
 
-    // let ownerNft = await core.balanceOf(accounts[0]);
-    // {
+    let ownerNftBalance = await core.balanceOf(accounts[0]);
+    {
 
-    //     for (let i = 20; i < ownerNft; i++) {
-    //         let tokenId = await core.tokenOfOwnerByIndex(accounts[0], i);
-    //         let random = lodash.random(0, 1000000000);
-    //         let char = encode(decode(random, 0), 0);
-    //         console.log("Random char: " + char);
-    //         console.log("Rebirth tokenId: " + tokenId.toString());
-    //         let rebirthNft = await creator.rebirthNft(tokenId, char, { from: accounts[0], gas: 10000000 });
-    //         console.log("Rebirth nft at txn: " + rebirthNft.tx);   
-    //     }
-    // }
+        for (let i = 0; i < ownerNftBalance; i++) {
+            let tokenId = await core.tokenOfOwnerByIndex(accounts[0], i);
+            let random = lodash.random(0, 1000000000);
+            let char = encode(decode(random, 0), 0);
+            console.log("Random char: " + char);
+            console.log("Rebirth tokenId: " + tokenId.toString());
+            let rebirthNft = await creator.rebirthNft(tokenId, char, { from: accounts[0], gas: 10000000 });
+            console.log("Rebirth nft at txn: " + rebirthNft.tx);   
+        }
+    }
 
 };
 
