@@ -33,12 +33,12 @@ contract NFTBase is ERC721Enumerable, NFTDependency, NFTAccessControl {
     tokenURISuffix = _suffix;
   }
 
-  function _beforeTokenTransfer(address from, address to, uint256 tokenId) 
+  function _beforeTokenTransfer(address from, address to, uint256 tokenId, uint256 batchSize) 
     whenNotPaused
     whenTransferAllowed(from, to, tokenId) 
     internal 
     virtual 
-    override {
-        super._beforeTokenTransfer(from, to, tokenId);
+    override{
+        super._beforeTokenTransfer(from, to, tokenId, batchSize);
     }
 }

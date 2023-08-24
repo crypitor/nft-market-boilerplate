@@ -21,11 +21,13 @@ contract ERC721Bid is OwnableUpgradeable, PausableUpgradeable, ERC721BidStorage,
     using SafeMath for uint256;
     using Address for address;
 
+    constructor () ERC2771ContextUpgradeable(address(this)){
+    }
+
     function initialize(address _integratedERC20, uint256 _ownerCutPerMillion) public initializer {
         OwnableUpgradeable.__Ownable_init();
         PausableUpgradeable.__Pausable_init();
         MinimalForwarderUpgradeable.__MinimalForwarder_init();
-        ERC2771ContextUpgradeable.__ERC2771Context_init(address(this));
         integratedERC20 = IERC20(_integratedERC20);
         setOwnerCutPerMillion(_ownerCutPerMillion);
     }

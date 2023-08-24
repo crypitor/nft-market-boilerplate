@@ -18,12 +18,12 @@ contract NFTManager is
     allowedAll = _allowedAll;
   }
 
-  function isSpawningAllowed(uint256 _characters, address owner) external view virtual override returns (bool) {
+  function isSpawningAllowed(uint256 /*_characters*/, address owner) external view virtual override returns (bool) {
     require(owner != address(0), "Can not spawn nft to ZERO!");
     return allowedAll;
   }
 
-  function isRebirthAllowed(uint256, uint256 _characters) external view virtual override returns (bool) {
+  function isRebirthAllowed(uint256, uint256 /*_characters*/) external view virtual override returns (bool) {
     return allowedAll;
   }
 
