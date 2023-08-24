@@ -7,11 +7,19 @@ This project contains multiple pieces to create a functional (although not produ
 - Node.js at least v16.19.0— [Install Node](https://nodejs.org/en)
 
 ## Build & Compile
-yarn
-yarn add global truffle
+```bash
+mv env.sample.json env.json  
+yarn  
+yarn add global truffle  
+```
 
 ## Truffle compile and migrate
-truffle compile
-truffle develop
-truffle migrate
+```bash
+truffle compile  
+truffle develop  
+truffle migrate  
+```
 ### Deploy smart contracts
+```bash
+truffle migrate --network mainnet
+```
