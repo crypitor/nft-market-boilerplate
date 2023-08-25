@@ -1,0 +1,87 @@
+specVersion: 0.0.4
+description: NFT MetaverseMarket
+repository: https://github.com/crypitor/nft-market-boilerplate
+schema:
+  file: ./schema.graphql
+features:
+  - fullTextSearch
+  - nonFatalErrors
+  - grafting
+dataSources:
+  # ---------------------------------------------------------
+  # NFT Core  -------------------------------------------------
+  # ---------------------------------------------------------
+
+  - kind: ethereum/contract
+    name: NFTCore
+    network: {{network}}
+    source:
+      address: '{{address:NFTCore}}'
+      startBlock: {{startBlock:NFTCore}}
+      abi: NFTCore
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - NFT
+        - Account
+      abis:
+        - name: NFTCore
+          file: ../build/contracts/NFTCore.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: Paused(address)
+          handler: handlePaused
+        - event: NftEvolved(indexed uint256,uint256,uint256,uint8)
+          handler: handleNftEvolved
+        - event: NftRebirthed(indexed uint256,uint256)
+          handler: handleNftRebirthed
+        - event: NftRetired(indexed uint256)
+          handler: handleNftRetired
+        - event: NftSpawned(indexed uint256,indexed address,uint256,uint256,uint256,uint8)
+          handler: handleNftSpawned
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: Unpaused(address)
+          handler: handleUnpaused
+      file: ./src/handlers/nft.ts
+
+
+  # ---------------------------------------------------------
+  # MARKET  -------------------------------------------------
+  # ---------------------------------------------------------
+  - kind: ethereum/contract
+    name: MetaverseMarket
+    network: {{network}}
+    source:
+      address: '{{address:MetaverseMarket}}'
+      startBlock: {{startBlock:MetaverseMarket}}
+      abi: MetaverseMarket
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Account
+        - Order
+      abis:
+        - name: MetaverseMarket
+          file: ../build/contracts/MetaverseMarket.json
+      eventHandlers:
+        - event: ApproveNFT(address,bool)
+          handler: handleApproveNFT  
+        - event: CancelOrder(indexed address,uint256)
+          handler: handleCancelOrder
+        - event: ExecuteOrder(indexed address,indexed address,uint256,uint256)
+          handler: handleExecuteOrder
+        - event: OpenOrder(indexed address,address,uint256,uint256,uint256)
+          handler: handleOpenOrder
+        - event: OrderStatusChange(uint256,bytes32)
+          handler: handleOrderStatusChange
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/handlers/market.ts

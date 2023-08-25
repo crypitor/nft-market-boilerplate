@@ -1,0 +1,39 @@
+{
+  "name": "subgraphs",
+  "description": "subgraphs-metaverse",
+  "license": "UNLICENSED",
+  "version": "v1.0.0",
+  "scripts": {
+    "codegen": "graph codegen --output-dir 'src/entities'",
+    "build-data": "ts-node ./scripts/buildData.ts",
+    "build": "graph build --skip-migrations",
+    "deploy": "graph deploy --studio therocks -l v1.0.0",
+    "create-local": "graph create --node http://graph-node:8020/ therock/metaverse",
+    "remove-local": "graph remove --node http://graph-node:8020/ therock/metaverse",
+    "deploy-local": "graph deploy --node http://graph-node:8020/ --ipfs http://graph-node:5001 therock/metaverse -l v1.0.1-local",
+    "create-testnet": "graph create --node http://graph-testing.therocks.io:8020/ therock/metaverse",
+    "remove-testnet": "graph remove --node http://graph-testing.therocks.io:8020/ therock/metaverse",
+    "deploy-testnet": "graph deploy --node http://graph-testing.therocks.io:8020/ --ipfs http://graph-testing.therocks.io:5001 therock/metaverse -l v1.0.0-testnet",
+    "create-mainnet": "graph create --node http://graph.therocks.io:8020/ therock/metaverse",
+    "remove-mainnet": "graph remove --node http://graph.therocks.io:8020/ therock/metaverse",
+    "deploy-mainnet": "graph deploy --node http://graph.therocks.io:8020/ --ipfs http://graph.therocks.io:5001 therock/metaverse -l v1.0.0-testnet"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.5.1",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "ethers": "^6.7.1",
+    "ts-node": "^8.5.4",
+    "typescript": "^4.4.2"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "^0.55.0",
+    "@graphprotocol/graph-ts": "0.31.0",
+    "assemblyscript": "0.27.1",
+    "assemblyscript-compile-cli": "^0.2.0",
+    "assemblyscript-regex": "1.6.4",
+    "global": "^4.4.0",
+    "tslint-plugin-prettier": "^2.3.0"
+  }
+}

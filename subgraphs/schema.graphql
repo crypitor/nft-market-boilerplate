@@ -1,0 +1,79 @@
+# thegraph doesn't support count operations, but we need them to paginate results
+# This entity is a workaround to this issue, but it's still not enough, as we'd need counts for more complex queries
+type Count @entity {
+  id: ID!
+  totalNFT: Int!
+  totalOrder: Int!
+  totalExecuted: Int!
+  # totalVolume: BigInt!
+  # totalVolume24h: BigInt!
+  # totalVolume7days: BigInt!
+  # totalVolume30days: BigInt!
+  nftInOrder: Int!
+  nftEvolve: Int!
+  nftLevels: [CountLevel!]! @derivedFrom(field: "count")
+}
+
+type CountLevel @entity {
+  id: ID!
+  quantity: Int!
+  count: Count!
+}
+
+
+type Order @entity {
+  id: ID!
+  orderId: BigInt!
+  seller: Account!
+  buyer: Account
+  nft: NFT!
+  price: BigInt!
+  expireAt: BigInt!
+  status: OrderStatus!
+  timestamp: BigInt!
+  updatedAt: BigInt!
+  executeTxn: Bytes
+}
+
+type Account @entity {
+  id: ID!
+  totalOrder: Int!
+  orders: [Order!]! @derivedFrom(field: "seller")
+  totalExecuted: Int!
+  totalTransacted: Int!
+  transacted: [Order!]! @derivedFrom(field: "buyer")
+  token: [NFT!]! @derivedFrom(field: "owner")
+  nftBalance: Int!
+  balance: Int!
+}
+
+type NFT @entity {
+  id: ID!
+  tokenId: BigInt!
+  characters: BigInt!
+  exp: BigInt!
+  level: Int!
+  bornAt: BigInt!
+  tokenURI: String!
+  createdAt: BigInt!
+  owner: Account!
+  inOrder: Order
+  lastPrice: BigInt
+  orders: [Order!]! @derivedFrom(field: "nft")
+  updatedAt: BigInt!
+}
+
+enum Clazz @entity {
+  Atlantic # (Speed)
+  Pacific # (Health)
+  Indian # (Attack)
+  Arctic # (Shield)
+  Antarctic # (Shield)
+}
+
+enum OrderStatus {
+  OPEN,
+  CANCEL,
+  EXECUTED,
+  INVALID
+}
