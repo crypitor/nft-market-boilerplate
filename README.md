@@ -16,10 +16,19 @@ yarn add global truffle
 ## Truffle compile and migrate
 ```bash
 truffle compile  
-truffle develop  
+truffle develop  --log
 truffle migrate  
+truffle test
 ```
 ### Deploy smart contracts
 ```bash
 truffle migrate --network mainnet
+```
+
+# Subgraph
+
+## Build
+```bash
+cd subgraphs
+yarn build
 ```
