@@ -65,7 +65,7 @@ module.exports = {
   },
   plugins: [
     //truffle run verify Token --network bsc
-    'truffle-plugin-verify'
+    'truffle-plugin-verify', 'truffle-security'
   ],
   api_keys: {
     etherscan: mainenv.ETHERSCAN_APIKEY,
