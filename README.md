@@ -30,5 +30,6 @@ truffle migrate --network mainnet
 ## Build
 ```bash
 cd subgraphs
-yarn build
+yarn
+yarn build --network mainnet
 ```
