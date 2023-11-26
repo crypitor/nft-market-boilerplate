@@ -1427,7 +1427,7 @@
     axios "^1.4.0"
     lodash "^4.17.21"
 
-"@openzeppelin/hardhat-upgrades@^2.3.1":
+"@openzeppelin/hardhat-upgrades@^2.4.1":
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/@openzeppelin/hardhat-upgrades/-/hardhat-upgrades-2.4.1.tgz#5c8aa3f98efbc5065b20c489e96dff96fd43ca67"
   integrity sha512-IF1nQ0Jbi9bUqGWAAaX6zP5CY5tgTM3jF+ipXXatPYLooFzyGbkk7wHHWzi/+9Rx64Ar7XQVtGlwVdAohMuRcw==
@@ -2178,6 +2178,11 @@
   integrity sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==
   dependencies:
     "@types/node" "*"
+
+"@types/lodash@^4.14.202":
+  version "4.14.202"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.202.tgz#f09dbd2fb082d507178b2f2a5c7e74bd72ff98f8"
+  integrity sha512-OvlIYQK9tNneDlS0VN54LLd5uiPCBOp7gS5Z0f1mjoJYBrtStzgmJBxONW3U6OZqdtNzZPmn9BS/7WI7BFFcFQ==
 
 "@types/long@^4.0.0":
   version "4.0.2"
