@@ -8,7 +8,7 @@ import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 contract MetaverseMarket is MetaverseBaseMarket, MarketEnumerable, OwnableUpgradeable {
     using SafeMath for uint256;
-    uint256 public tradingFee = 5;
+    uint256 public tradingFee;
 
     event OpenOrder(address indexed poster, address _nftAddress, uint256 itemId, uint256 orderId, uint256 price);
     event ExecuteOrder(address indexed seller, address indexed buyer, uint256 orderId, uint256 price);
@@ -19,6 +19,8 @@ contract MetaverseMarket is MetaverseBaseMarket, MarketEnumerable, OwnableUpgrad
         require(_integratedERC20 != address(0), "Invalid address");
         OwnableUpgradeable.__Ownable_init();
         integratedERC20 = IERC20(_integratedERC20);
+        tradingFee = 5;
+        orderCounter = 1;
     }
 
     function setTradingToken(address _tradingToken) public onlyOwner virtual {
