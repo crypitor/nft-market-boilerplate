@@ -1,22 +1,33 @@
-import hre, { deployments, ethers } from 'hardhat';
+import hre, { deployments, ethers, upgrades } from 'hardhat';
 import { MetaverseMarket, MyToken, NFTCore } from '../typechain-types';
+import { DeployFunction } from 'hardhat-deploy/dist/types';
 
 
-async function main() {
+const func: DeployFunction = async function () {
   console.log("\n******************* Deploy MetaverseMarket *******************");
   const [deployer, user] = await ethers.getSigners();
   const nftCore: NFTCore = await ethers.getContract("NFTCore");
   const myToken: MyToken = await ethers.getContract("MyToken");
 
-  await deployments.deploy("MetaverseMarket", { from: deployer.address });
-
-  const market: MetaverseMarket = await ethers.getContract("MetaverseMarket", deployer);
-  // initialize market with integrated token
-  await market.connect(deployer).initialize(await myToken.getAddress());
+  const market = await deployments.deploy("MetaverseMarket", {
+    from: deployer.address,
+    args: [],
+    log: true,
+    autoMine: true,
+    proxy: {
+      proxyContract: "OpenZeppelinTransparentProxy",
+      execute: {
+        init: {
+          methodName: "initialize",
+          args: [await myToken.getAddress()],
+        },
+      },
+    }
+  })
 
   // approve market to trade NFT
-  const approveTxn = await nftCore.connect(deployer).setApprovalForAll(await market.getAddress(), true);
-  console.log("Approve market trading for accounts[0] at txn: " + approveTxn.hash);
+  const approveTxn = await nftCore.connect(deployer).setApprovalForAll(market.address, true);
+  console.log("Approve market trading for market at txn: " + approveTxn.hash);
 
   try {
     await hre.run("verify:verify", {
@@ -28,4 +39,5 @@ async function main() {
   }
 }
 
-export default main;
+export default func;
+func.tags = ["MetaverseMarket"]
