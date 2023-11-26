@@ -1,7 +1,8 @@
 import hre, { deployments, ethers } from 'hardhat';
 import { MyToken, NFTCore, NFTEvolver } from '../typechain-types';
+import { DeployFunction } from 'hardhat-deploy/dist/types';
 
-export default async function () {
+const func: DeployFunction = async function () {
 	console.log('\n******************* Deploy Evolver *******************');
 	const [deployer] = await hre.ethers.getSigners();
 
@@ -28,3 +29,6 @@ export default async function () {
 		console.error("Can not verify contract for network:", hre.network.name);
 	}
 };
+
+export default func;
+func.tags =	['NFTEvolver'];

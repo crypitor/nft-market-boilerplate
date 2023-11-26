@@ -1,7 +1,8 @@
 import hre, { deployments, ethers } from 'hardhat';
+import { DeployFunction } from 'hardhat-deploy/dist/types';
 
 
-async function main() {
+const func: DeployFunction = async function () {
   console.log('\n******************* Deploy NFTCore *******************');
   const [deployer] = await hre.ethers.getSigners();
 
@@ -20,4 +21,5 @@ async function main() {
   }
 }
 
-export default main;
+export default func;
+func.tags = ['NFTCore'];

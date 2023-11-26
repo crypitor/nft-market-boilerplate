@@ -1,6 +1,7 @@
 import hre, { deployments, ethers } from 'hardhat';
+import { DeployFunction } from 'hardhat-deploy/dist/types';
 
-export default async function () {
+const func: DeployFunction = async function () {
 	console.log('\n******************* Deploy MyToken *******************');
 	const [deployer] = await hre.ethers.getSigners();
 
@@ -12,13 +13,14 @@ export default async function () {
 	});
 
 	try {
-        await hre.run("verify:verify", {
-            address: (await ethers.getContract("MyToken")).getAddress(),
-            constructorArguments: [],
-        });
-    } catch(e) {
-        console.error("Can not verify contract for network:", hre.network.name);
-    }
+		await hre.run("verify:verify", {
+			address: (await ethers.getContract("MyToken")).getAddress(),
+			constructorArguments: [],
+		});
+	} catch (e) {
+		console.error("Can not verify contract for network:", hre.network.name);
+	}
 };
-// export default func;
-// func.tags = ['MyToken'];
+
+export default func;
+func.tags = ['MyToken'];
