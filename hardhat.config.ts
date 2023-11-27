@@ -7,6 +7,7 @@ import "hardhat-deploy-ethers";
 import "@nomicfoundation/hardhat-ignition";
 import "@openzeppelin/hardhat-upgrades";
 import 'solidity-coverage';
+import "solidity-docgen";
 import * as dotenv from "dotenv";
 
 dotenv.config();

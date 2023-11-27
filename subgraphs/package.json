@@ -8,7 +8,7 @@
     "build-data": "ts-node ./scripts/buildData.ts",
     "build": "graph build --skip-migrations",
     "deploy": "graph deploy --studio nfts -l v1.0.0",
-    "create-local": "graph create --node http://graph-node:8020/ nft/metaverse",
+    "create-local": "graph create --node http://localhost:8545/ nft/metaverse",
     "remove-local": "graph remove --node http://graph-node:8020/ nft/metaverse",
     "deploy-local": "graph deploy --node http://graph-node:8020/ --ipfs http://graph-node:5001 nft/metaverse -l v1.0.1-local",
     "create-testnet": "graph create --node http://graph-testing.graphnode.com:8020/ nft/metaverse",
