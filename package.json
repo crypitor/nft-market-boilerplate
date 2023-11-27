@@ -16,6 +16,7 @@
     "@openzeppelin/contracts": "^4.8.2",
     "@openzeppelin/contracts-upgradeable": "^4.3.0",
     "@openzeppelin/subgraphs": "^0.1.8-5",
+    "@thirdweb-dev/contracts": "^3.10.3",
     "@truffle/hdwallet-provider": "^1.0.37",
     "abstract-leveldown": "^7.0.0",
     "bigint-buffer": "^1.1.5",
