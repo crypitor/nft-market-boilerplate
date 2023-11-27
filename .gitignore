@@ -8,10 +8,13 @@ simulations-results
 fancy-cats
 bin
 env.json
-testenv.json
 package-lock.json
 pnpm-lock.yaml
-temp1.txt
-temp2.txt
-mumbai.json
+.env*
+!.env.example
 contracts/artifacts
+generated/
+cache/
+deployments/
+typechain-types/
+artifacts/

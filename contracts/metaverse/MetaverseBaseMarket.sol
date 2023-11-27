@@ -35,7 +35,7 @@ contract MetaverseBaseMarket {
     mapping (address => mapping(uint256 => uint256)) public orderByAssetId;
     mapping(address => bool) public approvedNfts;
 
-    uint256 orderCounter = 1;
+    uint256 public orderCounter;
     
     function _beforeOpen(uint256 _item, address _nftAddress, uint256 _price, uint256 _expireAt) internal virtual {
         IERC721 nft = IERC721(_nftAddress);
