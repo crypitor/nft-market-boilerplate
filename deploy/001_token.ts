@@ -2,7 +2,7 @@ import hre, { deployments, ethers } from 'hardhat';
 import { DeployFunction } from 'hardhat-deploy/dist/types';
 
 const func: DeployFunction = async function () {
-	console.log('\n******************* Deploy MyToken *******************');
+	console.log('\n******************* Deploy Mock MyToken *******************');
 	const [deployer] = await hre.ethers.getSigners();
 
 	await deployments.deploy('MyToken', {

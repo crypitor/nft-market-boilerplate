@@ -2,7 +2,7 @@ import hre, { deployments, ethers } from 'hardhat';
 import { MyToken, NFTCore, NFTCreator } from '../typechain-types';
 import { DeployFunction } from 'hardhat-deploy/dist/types';
 
-const func:DeployFunction = async function () {
+const func: DeployFunction = async function () {
 	console.log('\n******************* Deploy Creator *******************');
 	const [deployer] = await hre.ethers.getSigners();
 
